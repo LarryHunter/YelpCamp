@@ -1,3 +1,87 @@
+# YelpCamp
+
+> A Node.js web application project from the Udemy course - [The Web Developer Bootcamp by Colt Steele](https://www.udemy.com/the-web-developer-bootcamp/)
+
+## Live Demo
+
+To see the app in action, go to [https://larrys-yelpcamp/](https://larrys-yelpcamp-2020.herokuapp.com)
+
+## Features
+
+* Authentication:
+  
+  * User login with username and password
+
+* Authorization:
+
+  * User cannot manage posts or comments without being authenticated
+
+  * User cannot edit or delete posts or comments created by other users
+
+* Manage campground posts with basic functionalities:
+
+  * Read, create, edit and delete posts and comments
+
+  * Upload campground images
+
+* Flash messages responding to users' interaction with the app
+
+* Responsive web design
+
+## Getting Started
+
+> This app contains API secrets and passwords that have been hidden deliberately, so the app cannot be run with its features on your local machine. However, feel free to clone this repository if necessary.
+
+### Clone or download this repository
+
+```sh
+git clone https://github.com/LarryHunter/YelpCamp.git
+```
+
+### Install dependencies
+
+```sh
+npm install
+```
+
+### Comments in code
+
+Some comments in the source code are course notes and therefore might not seem necessary from a developer's point of view.
+
+## Built with
+
+### Front-end
+
+* [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+* [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+* [JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript)
+* [ejs](http://ejs.co/)
+* [Bootstrap](https://getbootstrap.com/)
+
+### Back-end
+
+* [express](https://expressjs.com/)
+* [mongoDB](https://www.mongodb.com/)
+* [mongoose](http://mongoosejs.com/)
+* [body-parser](http://expressjs.com/en/resources/middleware/body-parser.html)
+* [passport](http://www.passportjs.org/)
+* [passport-local](https://github.com/jaredhanson/passport-local#passport-local)
+* [express-session](https://github.com/expressjs/session#express-session)
+* [method-override](https://github.com/expressjs/method-override#method-override)
+* [moment](https://momentjs.com/)
+* [connect-flash](https://github.com/jaredhanson/connect-flash#connect-flash)
+
+### Platforms
+
+* [GoormIDE](https://ide.goorm.io/)
+* [Heroku](https://www.heroku.com/)
+
+## License
+
+#### [MIT](./LICENSE)
+
+
+
 # Style the campgrounds page
 * Add a better header/title
 * Make campgrounds display in a grid
