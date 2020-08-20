@@ -20,11 +20,6 @@
         <% } %>
     </div>
     
-    <div id="landing-header">
- 		<h1>Welcome to YelpCamp!</h1>
-		<a href="/campgrounds" class="btn btn-primary btn-lg">View All Campgrounds</a>
-    </div>
-    
     <ul class="slideshow">
       <li></li>
       <li></li>
@@ -33,6 +28,23 @@
       <li></li>
     </ul>
 
-	<div id="footer">
-		<%- include("../views/partials/footer") %>
+	<!-- Main header and call to action -->
+	<div id="landing-header">
+		<div class="row mx-0">
+			<div class="col-lg-6 col-md-8 mx-auto mt-5">
+				<div class="card text-white">
+					<div class="card-body">
+						<h1 class="display-4">Welcome to YelpCamp</h1>
+						<!-- <p class="lead">A final project for the Web Developer Bootcamp.</p> -->
+						<p class="lead">A Node.js web application project from Udemy: <a href="https://www.udemy.com/course/the-web-developer-bootcamp/">The Web Developer Bootcamp</a></p>
+						<a href="/campgrounds" class="btn btn-lg btn-primary">View All Campgrounds</a>
+					</div>
+					<!-- Footer -->
+					<div class="card-footer">
+						<span class="float-left">Created by <a href="#" class="text-reset font-weight-bold">Larry Hunter</a></span>
+						<span class="float-right">View this project on <a href="https://github.com/LarryHunter/YelpCamp" class="text-reset font-weight-bold">Github</a></span>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
