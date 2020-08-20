@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+		<!-- Custom style sheet -->
+		<link rel="stylesheet" type="text/css" href="/stylesheets/app.css"/>
+		
+		<title>Yelp Camp</title>
+    </head>
+    <body>
+
+	<nav class="navbar sticky-top navbar-light bg-light">
+		<div class="container">
+			<a class="navbar-brand" href="/">YelpCamp</a>
+			<form class="form-inline">
+				<ul class="nav justify-content-end">
+					<% if (!currentUser) { %>
+						<li><a href="/login" class="btn btn-outline-primary btn-md mr-1 mt-1">Login</a></li>
+						<li><a href="/register" class="btn btn-primary btn-md ml-1 mt-1">Sign Up</a></li>
+					<% } else { %>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<%= currentUser.username %>
+							</a>
+							<div class="dropdown-menu mr-2" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="/logout">Logout</a>
+							</div>
+						</li>
+					<% } %>
+				</ul>
+			</form>
+		</div>
+	</nav>
+	
+	<div class="container">
+		<% if (flashSuccessMessage && flashSuccessMessage.length > 0) { %>
+			<div class="alert alert-success" role="alert">
+				<%= flashSuccessMessage %>
+			</div>
+		<% } else if (flashErrorMessage && flashErrorMessage.length > 0) { %>
+			<div class="alert alert-danger" role="alert">
+				<%= flashErrorMessage %>
+			</div>
+		<% } %>
+	</div>
+
+	<div>
+		<p></p>
+	</div>
+	

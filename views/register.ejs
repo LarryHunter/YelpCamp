@@ -1,0 +1,15 @@
+<%- include("../views/partials/header") %>
+
+<div class="container">	
+	<h1>
+		Sign Up
+	</h1>
+
+	<form action="/register" method="POST">
+		<input type="text" name="username" placeholder="Username" required>
+		<input type="password" name="password" placeholder="Password" required>
+		<button class="btn btn-sm btn-outline-primary">Sign Up</button>
+	</form>
+</div>
+
+<%- include("../views/partials/footer") %>

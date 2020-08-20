@@ -1,0 +1,32 @@
+<%- include("../partials/header") %>
+
+<div class="container">	
+	<header class="jumbotron">
+		<div class="container">
+			<h1>Welcome to Yelp Camp!</h1>
+			<p>View our hand-picked campgrounds from all over the world.</p>
+			<p><a href="/campgrounds/new" class="btn btn-outline-primary btn-lg">Add New Campground</a></p>
+		</div>
+	</header>
+
+	<% if (campgrounds.length > 0) { %>
+		<h4>Our most popular Campgrounds...</h4>
+	<% } %>
+	
+	<div class="row text-center">
+		<% campgrounds.forEach((camp) => { %>
+		<div class="col-md-3 col-sm-6">
+			<div class="card">
+				<div class="card-body p-1">
+					<a href="campgrounds/<%= camp._id %>"><img class="img-thumbnail" alt="No image available..." src="<%= camp.image %>"></a>
+					<p class="card-title"><%= camp.name %></p>
+					<% var partialDesc = camp.description.substring(0, 14) + " ..."  %>
+					<p><a href="campgrounds/<%= camp._id %>" class="card-text"><%= partialDesc %></a></p>
+				</div>
+			</div>
+		</div>
+		<% }); %>
+	</div>
+</div>
+
+<%- include("../partials/footer") %>
