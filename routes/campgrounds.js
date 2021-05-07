@@ -1,8 +1,8 @@
 const express = require("express"),
-	  Campground = require("../models/campground"),
-	  Comment = require("../models/comment"),
-	  Middleware = require("../middleware"),
-	  router = express.Router();
+	Campground = require("../models/campground"),
+	Comment = require("../models/comment"),
+	Middleware = require("../middleware"),
+	router = express.Router();
 
 // INDEX ROUTE - Display a list of all items
 router.get("/", (req, res) => {
@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
 		if (err) {
 			console.log(err);
 		} else {
-			res.render("campgrounds/index", {campgrounds: campgrounds});	
+			res.render("campgrounds/index", { campgrounds: campgrounds });
 		}
 	})
 });
@@ -53,7 +53,7 @@ router.get("/:id", (req, res) => {
 			console.log(err.message);
 		} else {
 			// Render show template with that campground
-			res.render("campgrounds/show", {campground: foundCampground});
+			res.render("campgrounds/show", { campground: foundCampground });
 		}
 	});
 });
@@ -63,15 +63,15 @@ router.get("/:id/edit", Middleware.checkCampgroundOwnership, (req, res) => {
 	// Find the campground with the provided ID
 	Campground.findById(req.params.id, (err, foundCampground) => {
 		// Render the edit template with found campground
-		res.render("campgrounds/edit", {campground: foundCampground});
+		res.render("campgrounds/edit", { campground: foundCampground });
 	});
 });
 
 // UPDATE ROUTE - Save the edits made to a selected campground
 router.put("/:id", Middleware.checkCampgroundOwnership, (req, res) => {
 	// Sanitize the body prior to saving to remove any script tags that may have been entered by the user.
-	req.body.campground.name = req.sanitize(req.body.campground.name);
-	req.body.campground.description = req.sanitize(req.body.campground.description);
+	req.body.campground.name = req.body.campground.name;
+	req.body.campground.description = req.body.campground.description;
 	Campground.findByIdAndUpdate(req.params.id, req.body.campground, (err, updatedcampground) => {
 		if (err) {
 			console.log(err.message);
@@ -100,10 +100,10 @@ router.put("/:id", Middleware.checkCampgroundOwnership, (req, res) => {
 // USING THE DELETE ROUTE BELOW WILL REMOVE BOTH CAMPGROUND AND ASSOCIATED COMMENTS
 // DELETE ROUTE - deletes the campgrounds and all its comments
 router.delete("/:id", Middleware.checkCampgroundOwnership, (req, res) => {
-    Campground.findById(req.params.id, (err, foundCampground) => {
-        if (err) {
-            console.log(err.message);
-        } else {
+	Campground.findById(req.params.id, (err, foundCampground) => {
+		if (err) {
+			console.log(err.message);
+		} else {
 			// if there are comments, delete comments first
 			if (foundCampground.comments.length > 0) {
 				foundCampground.comments.forEach((comment) => {
@@ -118,16 +118,16 @@ router.delete("/:id", Middleware.checkCampgroundOwnership, (req, res) => {
 			}
 		}
 	});
-	
-    Campground.findByIdAndRemove(req.params.id, (err, campground) => {
-        if (err) {
-	    	console.log(err.message);
-            res.redirect("/campgrounds");
-        } else {
+
+	Campground.findByIdAndRemove(req.params.id, (err, campground) => {
+		if (err) {
+			console.log(err.message);
+			res.redirect("/campgrounds");
+		} else {
 			console.log("Deleted campground: " + campground.name);
-    	    res.redirect("/campgrounds");
-        }
-    });
+			res.redirect("/campgrounds");
+		}
+	});
 });
 
 module.exports = router;

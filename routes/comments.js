@@ -1,8 +1,8 @@
 const express = require("express"),
-	  Campground = require("../models/campground"),
-	  Comment = require("../models/comment"),
-	  Middleware = require("../middleware"),
-	  router = express.Router({mergeParams: true});
+	Campground = require("../models/campground"),
+	Comment = require("../models/comment"),
+	Middleware = require("../middleware"),
+	router = express.Router({ mergeParams: true });
 
 // NEW COMMENT ROUTE - Nested route that will call a form to enter a comment for a specified campground
 router.get("/new", Middleware.isLoggedIn, (req, res) => {
@@ -12,7 +12,7 @@ router.get("/new", Middleware.isLoggedIn, (req, res) => {
 			console.log(err);
 		} else {
 			// Render new comment template with the selected campground
-			res.render("comments/new", {campground: campground});
+			res.render("comments/new", { campground: campground });
 		}
 	});
 });
@@ -54,7 +54,7 @@ router.get("/:comment_id/edit", Middleware.checkCommentOwnership, (req, res) => 
 		// Find the comment with the provided ID
 		Comment.findById(req.params.comment_id, (err, foundComment) => {
 			// Render the edit template with found campground comment
-			res.render("comments/edit", {campground: foundCampground, comment: foundComment});
+			res.render("comments/edit", { campground: foundCampground, comment: foundComment });
 		});
 	});
 });
@@ -62,7 +62,7 @@ router.get("/:comment_id/edit", Middleware.checkCommentOwnership, (req, res) => 
 // UPDATE COMMENT ROUTE - Save the edits made to a selected campground
 router.put("/:comment_id", Middleware.checkCommentOwnership, (req, res) => {
 	// Sanitize the body prior to saving to remove any script tags that may have been entered by the user.
-	req.body.comment.text = req.sanitize(req.body.comment.text);
+	req.body.comment.text = req.body.comment.text;
 	const newComment = req.body.comment;
 	Comment.findByIdAndUpdate(req.params.comment_id, newComment, (err, updatedComment) => {
 		// Redirect to the show page for the campground and (updated) comment
